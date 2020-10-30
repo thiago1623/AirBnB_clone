@@ -11,16 +11,14 @@ class BaseModel:
         """Contructor"""
         if kwargs:
             for key, value in kwargs.items():
-                if key == '__class__':
-                    continue
-                elif key == "created_at" or key == "updated_at":
-                    self.__dict__[key] = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                else:
-                    self.__dict__[key] = value
+
+                if key == "created_at" or key == "update_at":
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                if key != "__class__":
+                    setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
         """toString"""
@@ -37,9 +35,3 @@ class BaseModel:
         dicc['updated_at'] = dicc['updated_at'].isoformat()
         dicc['created_at'] = dicc['created_at'].isoformat()
         return dicc
-
-    """Date time"""
-    # moon_time = "2017-06-14T22:31:03.285259"
-    # dtae = datetime.strptime(moon_time, "%Y-%m-%dT%H:%M:%S.%f")
-    # print(dtae)
-    # print(type(dtae))
