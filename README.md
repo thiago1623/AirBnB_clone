@@ -21,7 +21,7 @@ This repository contains the first phase of a student project to build a clone o
 ````
 3. When this command is run the following prompt should appear:
  
-````
+````diff
 (hbnb)
 ````
 4. This prompt designates you are in the "HBnB" console. There are a variety of commands available within the console program.
