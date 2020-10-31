@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import sys
 __import__("sys").path.append("..")
 from models.base_model import BaseModel
