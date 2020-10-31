@@ -2,6 +2,11 @@
 """[Documentation Class]"""
 import json
 from models.base_model import BaseModel
+from models.state import State
+from models.review import Review
+from models.place import Place
+from models.amenity import Amenity
+from models.user import User
 
 
 class FileStorage:
