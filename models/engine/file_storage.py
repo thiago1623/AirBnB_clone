@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """[Documentation Class]"""
 import json
+import models
 from models.base_model import BaseModel
 
 
@@ -36,7 +37,6 @@ class FileStorage:
                 serializable_file = json.load(file)
             for key, value in serializable_file.items():
                 self.__objects[key] = eval(value['__class__'])(**value)
-                     
+
         except FileNotFoundError:
             pass
-

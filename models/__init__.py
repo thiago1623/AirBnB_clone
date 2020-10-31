@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-import sys
+"""
+Instantiation file that starts the file storage system
+"""
+import models
+from models.engine import file_storage
+from models.base_model import BaseModel
 
 
-if __name__ == "__main__":
-    sys.path.append("..")
-    from engine.file_storage import FileStorage
-
-    storage = file_storage.FileStorage()
-    storage.reload()
+storage = file_storage.FileStorage()
+storage.reload()
