@@ -2,6 +2,7 @@
 ''' Principal class'''
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -11,7 +12,6 @@ class BaseModel:
         """Contructor"""
         if kwargs:
             for key, value in kwargs.items():
-
                 if key == "created_at" or key == "update_at":
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__":
@@ -19,6 +19,7 @@ class BaseModel:
         else:
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """toString"""
@@ -28,6 +29,7 @@ class BaseModel:
     def save(self):
         """updated the public instance attribute update_at"""
         self.update_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """Convert to dictionary"""
