@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 import sys
+__import__("sys").path.append("..")
 
 
 if __name__ == '__main__':
-    __import__("sys").path.append("..")
     from models.base_model import BaseModel
-
-
     my_model = BaseModel()
     my_model.name = "Holberton"
     my_model.my_number = 89

@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 import sys
+__import__("sys").path.append("..")
 
 
 if __name__ == '__main__':
-    __import__("sys").path.append("..")
     from models import storage
     from models.base_model import BaseModel
     from models.user import User
