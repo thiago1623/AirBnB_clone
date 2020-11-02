@@ -16,7 +16,7 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        '''[instance method]'''
+        '''[return the object]'''
         return self.__objects
 
     def new(self, obj):
