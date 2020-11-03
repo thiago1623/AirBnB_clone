@@ -7,6 +7,7 @@ from models.review import Review
 from models.place import Place
 from models.amenity import Amenity
 from models.user import User
+from models.city import City
 
 
 class FileStorage:
