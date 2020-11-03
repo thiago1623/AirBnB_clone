@@ -1,9 +1,10 @@
 #!/usr/bin/python3
+
 """ Principal class"""
 
 
-from datetime import datetime
 import uuid
+from datetime import datetime
 import models
 
 
@@ -17,8 +18,8 @@ class BaseModel:
                 if key == "__class__":
                     continue
                 elif key == "created_at" or key == "updated_at":
-                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                    setattr(self, key, value)
+                    self.__dict__[key] = datetime.strptime(
+                        value, "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[key] = value
         else:
