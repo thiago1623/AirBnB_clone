@@ -150,6 +150,21 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+    def do_count(self, inp):
+        """Method that counts the instance of a class
+        """
+        count = 0
+        clas = inp.split()
+        objs = models.storage.all()
+        if not clas[0] in found_class:
+            print("** class doesn't exist **")
+            return None
+        for key, value in objs.items():
+            if value.__class__.__name__ == clas[0]:
+                count += 1
+        print(count)
+
+
     ##################
     # Help Functions #
     ##################
@@ -178,6 +193,121 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: update <valid class name>", end="")
         print("<valid id> <attribute name> <attribute value>")
 
+    ##########
+    # call all function
+    #########
+
+    def do_User(self, args):
+        """Usages:
+        User.all() - displays all objects of class User
+        User.count() - displays number of objects of class User
+        User.show(<id>) - displays object of class User with id
+        User.destroy(<id>) - deletes object of class User with id
+        User.update(id, attribute name, attribute value) - update User
+        User.update(<id>, <dictionary representation>) - update User
+        """
+        self.class_exec('User', args)
+
+    def do_BaseModel(self, args):
+        """Usages:
+        BaseModel.all() - displays all objects of class BaseModel
+        BaseModel.count() - displays number of objects of class BaseModel
+        BaseModel.show(<id>) - displays object of class BaseModel with id
+        BaseModel.destroy(<id>) - deletes object of class BaseModel with id
+        BaseModel.update(id, attribute name, attribute value) - update
+        BaseModel.update(<id>, <dictionary representation>) - update
+        """
+        self.class_exec('BaseModel', args)
+
+    def do_State(self, args):
+        """Usages:
+        State.all() - displays all objects of class State
+        State.count() - displays number of objects of class State
+        State.show(<id>) - displays object of class State with id
+        State.destroy(<id>) - deletes object of class BaseModel with id
+        State.update(<id>, <attribute name>, <attribute value>) - update
+        State.update(<id>, <dictionary representation>) - update
+        """
+        self.class_exec('State', args)
+
+    def do_City(self, args):
+        """Usages:
+        City.all() - displays all objects of class City
+        City.count() - displays number of objects of class City
+        City.show(<id>) - displays object of class City with id
+        City.destroy(<id>) - deletes object of class City with id
+        City.update(<id>, <attribute name>, <attribute value>) - update
+        City.update(<id>, <dictionary representation>) - update
+        """
+        self.class_exec('City', args)
+
+    def do_Amenity(self, args):
+        """Usages:
+        Amenity.all() - displays all objects of class Amenity
+        Amenity.count() - displays number of objects of class Amenity
+        Amenity.show(<id>) - displays object of class Amenity with id
+        Amenity.destroy(<id>) - deletes object of class Amenity with id
+        Amenity.update(<id>, <attribute name>, <attribute value>) - update
+        Amenity.update(<id>, <dictionary representation>) - update
+        """
+        self.class_exec('Amenity', args)
+
+    def do_Place(self, args):
+        """Usages:
+        Place.all() - displays all objects of class Place
+        Place.count() - displays number of objects of class Place
+        Place.show(<id>) - displays object of class Place with id
+        Place.destroy(<id>) - deletes object of class Place with id
+        Place.update(<id>, <attribute name>, <attribute value>) - update
+        Place.update(<id>, <dictionary representation>) - update
+        """
+        self.class_exec('Place', args)
+
+    def do_Review(self, args):
+        """Usages:
+        Review.all() - displays all objects of class Review
+        Review.count() - displays number of objects of class Review
+        Review.show(<id>) - displays object of class Review with id
+        Review.destroy(<id>) - deletes object of class Review with id
+        Review.update(<id>, <attribute name>, <attribute value>) - update
+        Review.update(<id>, <dictionary representation>) - update
+        """
+        self.class_exec('Review', args)
+
+
+    def class_exec(self, cls_name, args):
+            """Wrapper function for <class name>.action()"""
+            if args[:6] == '.all()':
+                self.do_all(cls_name)
+            elif args[:7] == '.count(':
+                self.do_count(cls_name)
+            elif args[:6] == '.show(':
+                self.do_show(cls_name + ' ' + args[7:-2])
+            elif args[:9] == '.destroy(':
+                self.do_destroy(cls_name + ' ' + args[10:-2])
+            elif args[:8] == '.update(':
+                if '{' in args and '}' in args:
+                    new_arg = args[8:-1].split('{')
+                    new_arg[1] = '{' + new_arg[1]
+                else:
+                    new_arg = args[8:-1].split(',')
+                if len(new_arg) == 3:
+                    new_arg = " ".join(new_arg)
+                    new_arg = new_arg.replace("\"", "")
+                    new_arg = new_arg.replace("  ", " ")
+                    self.do_update(cls_name + ' ' + new_arg)
+                elif len(new_arg) == 2:
+                    try:
+                        dict = eval(new_arg[1])
+                    except:
+                        return
+                    for j in dict.keys():
+                        self.do_update(cls_name + ' ' + new_arg[0][1:-3] + ' '
+                                       + str(j) + ' ' + str(dict[j]))
+                else:
+                    return
+            else:
+                print("Not a valid command")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
