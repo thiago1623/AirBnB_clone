@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-the console
+the Airbnb console
 """
 import cmd
 import models
