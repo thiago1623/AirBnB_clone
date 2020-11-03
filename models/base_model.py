@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-''' Principal class'''
-import uuid
+""" Principal class"""
+
+
 from datetime import datetime
+import uuid
 import models
 
 
 class BaseModel:
-    """ Generate random ID"""
+    """ Base Model class"""
 
     def __init__(self, *args, **kwargs):
         """Contructor"""
