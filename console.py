@@ -8,6 +8,7 @@ import shlex
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.place import Place
+from models.city import City
 from models.review import Review
 from models.state import State
 from models.user import User
@@ -33,12 +34,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, inp):
         """ command to exit the program"""
-        print("")
         return True
 
     def emptyline(self):
         """when line is empty do nothing"""
-        return False
+        pass
 
     def do_create(self, inp):
         """command to create an new instance"""
