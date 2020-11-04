@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 import sys
 import unittest
-sys.path.append("../..")
+import pep8
 from datetime import datetime
-from models import *
 from models.place import Place
 
 
@@ -11,6 +10,11 @@ class Test_PlaceModel(unittest.TestCase):
     """
     Test the place model class
     """
+    def testpep8(self):
+        """ testing codestyle """
+        pepstylecode = pep8.StyleGuide(quiet=True)
+        user_path = 'models/place.py'
+        result = pepstylecode.check_files([user_path])
 
     def setUp(self):
         self.model = Place()
@@ -42,4 +46,5 @@ class Test_PlaceModel(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    sys.path.append("../..")
     unittest.main()
