@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb)"
 
     ###############
-    # do command
+    # do command #
     ##############
 
     def do_quit(self, inp):
@@ -166,7 +166,7 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     ##################
-    # Help Functions
+    # Help Functions #
     ##################
 
     def help_quit(self):
@@ -301,8 +301,9 @@ class HBNBCommand(cmd.Cmd):
                 except:
                     return
                 for j in dict.keys():
-                    self.do_update(cls_name + ' ' + new_arg[0][1:-3] + ' '
-                                   + str(j) + ' ' + str(dict[j]))
+                    self.do_update(cls_name + ' ' +
+                                   new_arg[0][1:-3] + ' ' +
+                                   str(j) + ' ' + str(dict[j]))
             else:
                 return
         else:
