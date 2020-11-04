@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 import unittest
-sys.path.append("../..")
+import pep8
 from models.amenity import Amenity
 
 
@@ -9,6 +9,11 @@ class Test_AmenityModel(unittest.TestCase):
     """
     Test the amenity model class
     """
+    def testpep8(self):
+        """ testing codestyle """
+        pepstylecode = pep8.StyleGuide(quiet=True)
+        user_path = 'models/amenity.py'
+        result = pepstylecode.check_files([user_path])
 
     def setUp(self):
         self.model = Amenity()
@@ -20,4 +25,5 @@ class Test_AmenityModel(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    sys.path.append("../..")
     unittest.main()
