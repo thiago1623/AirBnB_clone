@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb)"
 
     ###############
-    # do command #
+    # do command
     ##############
 
     def do_quit(self, inp):
@@ -166,7 +166,7 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     ##################
-    # Help Functions #
+    # Help Functions
     ##################
 
     def help_quit(self):
