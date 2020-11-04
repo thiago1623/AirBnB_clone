@@ -13,7 +13,7 @@ class BaseModel:
     """ Base Model class"""
 
     def __init__(self, *args, **kwargs):
-        """Contructor"""
+        """Contructor de Base Model"""
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -28,7 +28,7 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """toString"""
+        """toString de Base Model"""
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id,
                                      self.__dict__)
