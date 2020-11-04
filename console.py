@@ -118,6 +118,20 @@ class HBNBCommand(cmd.Cmd):
         except Exception:
             raise
 
+    def do_count(self, inp):
+        """Method that counts the instance of a class
+        """
+        count = 0
+        clas = inp.split()
+        objs = models.storage.all()
+        if not clas[0] in found_class:
+            print("** class doesn't exist **")
+            return None
+        for key, value in objs.items():
+            if value.__class__.__name__ == clas[0]:
+                count += 1
+        print(count)
+
     def do_update(self, inp):
         """ update an instance based on its UUID """
         models.storage.reload()
@@ -150,20 +164,6 @@ class HBNBCommand(cmd.Cmd):
                     models.storage.save()
             else:
                 print("** no instance found **")
-
-    def do_count(self, inp):
-        """Method that counts the instance of a class
-        """
-        count = 0
-        clas = inp.split()
-        objs = models.storage.all()
-        if not clas[0] in found_class:
-            print("** class doesn't exist **")
-            return None
-        for key, value in objs.items():
-            if value.__class__.__name__ == clas[0]:
-                count += 1
-        print(count)
 
     ##################
     # Help Functions #
