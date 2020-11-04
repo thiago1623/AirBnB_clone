@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 import unittest
-sys.path.append("../..")
+import pep8
 from models.user import User
 
 
@@ -9,6 +9,12 @@ class Test_UserModel(unittest.TestCase):
     """
     Test the user model class
     """
+
+    def testpep8(self):
+        """ testing codestyle """
+        pepstylecode = pep8.StyleGuide(quiet=True)
+        user_path = 'models/user.py'
+        result = pepstylecode.check_files([user_path])
 
     def setUp(self):
         self.model = User()
@@ -26,4 +32,5 @@ class Test_UserModel(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    sys.path.append("../..")
     unittest.main()
