@@ -22,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
     the user types quit or EOF.
     """
     intro = "---Welcome to hbnb console! Type (?) or (help)to list commands---"
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
     ###############
     # do command #
