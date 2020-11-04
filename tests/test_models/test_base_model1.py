@@ -1,62 +1,94 @@
 #!/usr/bin/python3
-import sys
+'''test models'''
 import unittest
-import pep8
-from datetime import datetime
+import re
 from models.base_model import BaseModel
+from datetime import datetime
+from time import sleep
 
 
-class Test_BaseModel(unittest.TestCase):
-    """
-    Test the base model class
-    """
+class TestBaseModel(unittest.TestCase):
+    '''test BaseModel'''
 
-    def testpep8(self):
-        """ testing codestyle """
-        pepstylecode = pep8.StyleGuide(quiet=True)
-        user_path = 'models/base_model.py'
-        result = pepstylecode.check_files([user_path])
+    def test_createAttr_noArgs(self):
+        '''create Instance w/o args'''
+        my_model = BaseModel()
+        my_model.name = "Holberton"
+        self.assertEqual(my_model.name, "Holberton")
 
-    def setUp(self):
-        self.name_class = BaseModel()
+    def test_id_noArgs(self):
+        '''check type/value of id w/o args'''
+        my_model = BaseModel()
+        self.assertTrue(my_model.id)
+        self.assertEqual(type(my_model.id), str)
 
-        test_args = {'created_at': datetime.now(),
-                     'updated_at': datetime.now(),
-                     'id': 'dc429c3c-eb20-478d-bd53-3b5c34fbff82',
-                     'name': 'model1'}
-        self.edge_case = BaseModel(test_args)
-        self.edge_case.save()
+    def test_created_at_noArgs_type(self):
+        '''check type of created_at w/o args'''
+        my_model = BaseModel()
+        self.assertEqual(type(my_model.created_at), datetime)
 
-    def test_instantiation(self):
-        self.assertIsInstance(self.name_class, BaseModel)
-        self.assertTrue(hasattr(self.name_class, "created_at"))
-        self.assertTrue(hasattr(self.name_class, "id"))
-        self.assertTrue(hasattr(self.name_class, "updated_at"))
+    def test_created_at_noArgs_format(self):
+        '''check format %Y-%M-%DT%H:%M:%S.%MS'''
+        datetime_format = re.compile(
+            "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+$")
+        my_model = BaseModel()
+        my_created_at = my_model.to_dict()['created_at']
+        format_found = datetime_format.match(my_created_at)
+        self.assertIsNotNone(format_found)
 
-    def test_reinstantiation(self):
-        self.assertIsInstance(self.edge_case, BaseModel)
-        self.assertNotEqual(self.edge_case.id,
-                            'dc429c3c-eb20-478d-bd53-3b5c34fbff82')
-        self.assertNotEqual(self.edge_case.created_at,
-                            datetime.now())
+    def test_created_at_noArgs_value(self):
+        '''check value of created_at w/o args'''
+        now = datetime.now().replace(microsecond=0)
+        my_model = BaseModel()
+        self.assertEqual(my_model.created_at.replace(microsecond=0), now)
 
-    def test_save(self):
-        self.assertTrue(hasattr(self.name_class, "updated_at"))
-        self.name_class.save()
-        self.assertTrue(hasattr(self.name_class, "updated_at"))
-        old_time = self.edge_case.updated_at
-        self.edge_case.save()
-        self.assertNotEqual(old_time, self.edge_case.updated_at)
+    def test_created_at_noArgs_afterSave(self):
+        '''check created_at w/o args after save()'''
+        my_model = BaseModel()
+        my_created_at = my_model.created_at
+        my_model.save()
+        self.assertEqual(my_model.created_at, my_created_at)
 
-    def test_to_json(self):
-        json_file = self.edge_case.to_dict()
-        self.assertNotEqual(self.edge_case.__dict__, json_file)
-        self.assertNotIsInstance(json_file["created_at"], datetime)
-        self.assertNotIsInstance(json_file["updated_at"], datetime)
-        self.assertNotEqual(json_file["created_at"], datetime.now())
-        self.assertTrue(hasattr(json_file, "__class__"))
-        self.assertEqual(json_file["__class__"], "BaseModel")
+    def test_updated_at_noArgs_type(self):
+        '''check type updated_at'''
+        my_model = BaseModel()
+        self.assertEqual(type(my_model.updated_at), datetime)
 
+    def test_updated_at_noArgs_format(self):
+        '''check format %Y-%M-%DT%H:%M:%S.%MS'''
+        datetime_format = re.compile(
+            "\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+$")
+        my_model = BaseModel()
+        my_updated_at = my_model.to_dict()['updated_at']
+        format_found = datetime_format.match(my_updated_at)
+        self.assertIsNotNone(format_found)
 
-if __name__ == "__main__":
-    unittest.main()
+    def test_updated_at_noArgs_value(self):
+        '''check value of updated_at'''
+        now = datetime.now().replace(microsecond=0)
+        my_model = BaseModel()
+        self.assertEqual(my_model.updated_at.replace(microsecond=0), now)
+
+    def test_updated_at_noArgs_value_afterSave(self):
+        '''check value of updated_at after save()'''
+        my_model = BaseModel()
+        updated_pre = my_model.updated_at
+        my_model.save()
+        self.assertTrue(my_model.updated_at > updated_pre)
+
+    def test_str(self):
+        '''check __str__ method'''
+        my_model = BaseModel()
+        r = re.compile("\[BaseModel\] (.*) {.*}")
+        my_str = my_model.__str__()
+        self.assertIsNotNone(r.match(my_str))
+
+    def test_to_dict_noAditonalAttr(self):
+        '''check to_dict w/o additional Attributes'''
+        my_model = BaseModel()
+        BaseModel.name = "holberton"
+        attributes = {}
+        for key, value in my_model.to_dict().items():
+            if (key not in ('__class__', 'id', 'created_at', 'updated_at')):
+                attributes[key] = value
+        self.assertFalse(attributes)
