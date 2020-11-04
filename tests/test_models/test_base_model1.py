@@ -36,9 +36,9 @@ class Test_BaseModel(unittest.TestCase):
     def test_reinstantiation(self):
         self.assertIsInstance(self.edge_case, BaseModel)
         self.assertNotEqual(self.edge_case.id,
-                         'dc429c3c-eb20-478d-bd53-3b5c34fbff82')
+                            'dc429c3c-eb20-478d-bd53-3b5c34fbff82')
         self.assertNotEqual(self.edge_case.created_at,
-                         datetime.now())
+                            datetime.now())
 
     def test_save(self):
         self.assertTrue(hasattr(self.name_class, "updated_at"))
@@ -57,6 +57,6 @@ class Test_BaseModel(unittest.TestCase):
         self.assertTrue(hasattr(json_file, "__class__"))
         self.assertEqual(json_file["__class__"], "BaseModel")
 
+
 if __name__ == "__main__":
-    sys.path.append("../..")
     unittest.main()

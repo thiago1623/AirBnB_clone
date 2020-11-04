@@ -9,6 +9,7 @@ class Test_AmenityModel(unittest.TestCase):
     """
     Test the amenity model class
     """
+
     def testpep8(self):
         """ testing codestyle """
         pepstylecode = pep8.StyleGuide(quiet=True)
@@ -25,5 +26,4 @@ class Test_AmenityModel(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    sys.path.append("../..")
     unittest.main()

@@ -10,6 +10,7 @@ class Test_PlaceModel(unittest.TestCase):
     """
     Test the place model class
     """
+
     def testpep8(self):
         """ testing codestyle """
         pepstylecode = pep8.StyleGuide(quiet=True)
@@ -46,5 +47,4 @@ class Test_PlaceModel(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    sys.path.append("../..")
     unittest.main()

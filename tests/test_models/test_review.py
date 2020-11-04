@@ -30,5 +30,4 @@ class Test_ReviewModel(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    sys.path.append("../..")
     unittest.main()
