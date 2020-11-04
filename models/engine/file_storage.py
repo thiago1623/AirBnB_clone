@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """[Documentation Class]"""
-import json
 from models.base_model import BaseModel
 from models.state import State
 from models.review import Review
@@ -8,6 +7,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.user import User
 from models.city import City
+import json
 
 
 class FileStorage:
@@ -22,7 +22,7 @@ class FileStorage:
 
     def new(self, obj):
         """[add new object]"""
-        key = obj.__class__.__name__ + "." + str(obj.id)
+        key = obj.__class__.__name__ + "." + obj.id
         self.__objects[key] = obj
 
     def save(self):
