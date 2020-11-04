@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ Principal class"""
 
+import models
 from uuid import uuid4
 from datetime import datetime
-import models
 
 
 date_format = "%Y-%m-%dT%H:%M:%S.%f"
