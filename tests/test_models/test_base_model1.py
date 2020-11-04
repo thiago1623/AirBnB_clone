@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 import unittest
-sys.path.append("../..")
+import pep8
 from datetime import datetime
 from models.base_model import BaseModel
 
@@ -10,6 +10,12 @@ class Test_BaseModel(unittest.TestCase):
     """
     Test the base model class
     """
+
+    def testpep8(self):
+        """ testing codestyle """
+        pepstylecode = pep8.StyleGuide(quiet=True)
+        user_path = 'models/base_model.py'
+        result = pepstylecode.check_files([user_path])
 
     def setUp(self):
         self.name_class = BaseModel()
@@ -52,4 +58,5 @@ class Test_BaseModel(unittest.TestCase):
         self.assertEqual(json_file["__class__"], "BaseModel")
 
 if __name__ == "__main__":
+    sys.path.append("../..")
     unittest.main()

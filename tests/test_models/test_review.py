@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 import unittest
-sys.path.append("../..")
+import pep8
 from models.review import Review
 
 
@@ -9,6 +9,12 @@ class Test_ReviewModel(unittest.TestCase):
     """
     Test the review model class
     """
+
+    def testpep8(self):
+        """ testing codestyle """
+        pepstylecode = pep8.StyleGuide(quiet=True)
+        user_path = 'models/review.py'
+        result = pepstylecode.check_files([user_path])
 
     def setUp(self):
         self.model = Review()
@@ -24,4 +30,5 @@ class Test_ReviewModel(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    sys.path.append("../..")
     unittest.main()
