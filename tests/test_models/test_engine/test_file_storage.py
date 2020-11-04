@@ -43,17 +43,6 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(my_model), dict)
         self.assertIs(my_model, storage._FileStorage__objects)
 
-    def teardown(cls):
-        """ Deletes instance after test """
-        del cls.user
-
-    def tearDown(self):
-        """ Deletes file after test """
-        try:
-            os.remove("file.json")
-        except Exception:
-            pass
-
     def test_new(self):
         """[Test new file storage functions]"""
         storage = FileStorage()
