@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-the Airbnb console
+[The Airbnb console]
 """
 import cmd
 import models
@@ -18,8 +18,8 @@ found_class = {"Amenity": Amenity, "BaseModel": BaseModel, "Place": Place,
 
 
 class HBNBCommand(cmd.Cmd):
-    """Implementing cmd module that quits out of the interpreter when
-    the user types quit or EOF.
+    """[Implementing cmd module that quits out of the interpreter when
+    the user types quit or EOF.]
     """
     # intro = "---Welcome to hbnb console! Type (?) or (help)to list commands---"
     prompt = "(hbnb) "
@@ -29,19 +29,19 @@ class HBNBCommand(cmd.Cmd):
     ##############
 
     def do_quit(self, inp):
-        """ command to exit the program"""
+        """ [command to exit the program]"""
         return True
 
     def do_EOF(self, inp):
-        """ command to exit the program"""
+        """ [command to exit the program]"""
         return True
 
     def emptyline(self):
-        """when line is empty do nothing"""
+        """[when line is empty do nothing]"""
         pass
 
     def do_create(self, inp):
-        """command to create an new instance"""
+        """[command to create an new instance]"""
         try:
             arguments = inp.split()
             if len(arguments) == 0:
@@ -58,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
             raise
 
     def do_show(self, inp):
-        """ show """
+        """ [show class] """
         try:
             arguments = inp.split()
             models.storage.reload()
@@ -79,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
             raise
 
     def do_all(self, inp):
-        """ show all"""
+        """ [show all]"""
         try:
             arguments = inp.split()
             models.storage.reload()
@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
             raise
 
     def do_destroy(self, inp):
-        """ Destroy instance"""
+        """[ Destroy instance]"""
         try:
             arguments = inp.split()
             models.storage.reload()
@@ -118,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
             raise
 
     def do_update(self, inp):
-        """ update an instance based on its UUID """
+        """ [update an instance based on its UUID] """
         models.storage.reload()
         if len(inp) == 0:
             print("** class name missing **")
@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def count(self, arg):
-        """Count instances of a Class."""
+        """[Count instances of a Class.]"""
         count = 0
         arg_list = arg.split(' ')
         for key in models.storage.all():
@@ -165,26 +165,31 @@ class HBNBCommand(cmd.Cmd):
     ##################
 
     def help_quit(self):
-        """shows command help"""
+        """[shows command help]"""
         print("Quit command to exit the program")
 
     def help_EOF(self):
-        """ shows command help"""
+        """ [shows command help]"""
         print("CTRL + D (EOF) to exit the program")
 
     def help_create(self):
+        """[show help for create command]"""
         print("Usage: create <valid class name>")
 
     def help_show(self):
+        """[show help for show command]"""
         print("Usage: show <valid class name> <valid id>")
 
     def help_destroy(self):
+        """[show help for destroy command]"""
         print("Usage: destroy <valid class name> <valid id>")
 
     def help_all(self):
+        """[show help for all command]"""
         print("Usage: all OR all <valid class name>")
 
     def help_update(self):
+        """[show help for update update command]"""
         print("Usage: update <valid class name>", end="")
         print("<valid id> <attribute name> <attribute value>")
 
@@ -193,98 +198,98 @@ class HBNBCommand(cmd.Cmd):
     #########
 
     def do_User(self, args):
-        """Usages:
+        """[Usages:
         User.all() - displays all objects of class User
         User.count() - displays number of objects of class User
         User.show(<id>) - displays object of class User with id
         User.destroy(<id>) - deletes object of class User with id
         User.update(id, attribute name, attribute value) - update User
-        User.update(<id>, <dictionary representation>) - update User
+        User.update(<id>, <dictionary representation>) - update User]
         """
         self.class_exec('User', args)
 
     def do_BaseModel(self, args):
-        """Usages:
+        """[Usages:
         BaseModel.all() - displays all objects of class BaseModel
         BaseModel.count() - displays number of objects of class BaseModel
         BaseModel.show(<id>) - displays object of class BaseModel with id
         BaseModel.destroy(<id>) - deletes object of class BaseModel with id
         BaseModel.update(id, attribute name, attribute value) - update
-        BaseModel.update(<id>, <dictionary representation>) - update
+        BaseModel.update(<id>, <dictionary representation>) - update]
         """
         self.class_exec('BaseModel', args)
 
     def do_State(self, args):
-        """Usages:
+        """[Usages:
         State.all() - displays all objects of class State
         State.count() - displays number of objects of class State
         State.show(<id>) - displays object of class State with id
         State.destroy(<id>) - deletes object of class BaseModel with id
         State.update(<id>, <attribute name>, <attribute value>) - update
-        State.update(<id>, <dictionary representation>) - update
+        State.update(<id>, <dictionary representation>) - update]
         """
         self.class_exec('State', args)
 
     def do_City(self, args):
-        """Usages:
+        """[Usages:
         City.all() - displays all objects of class City
         City.count() - displays number of objects of class City
         City.show(<id>) - displays object of class City with id
         City.destroy(<id>) - deletes object of class City with id
         City.update(<id>, <attribute name>, <attribute value>) - update
-        City.update(<id>, <dictionary representation>) - update
+        City.update(<id>, <dictionary representation>) - update]
         """
         self.class_exec('City', args)
 
     def do_Amenity(self, args):
-        """Usages:
+        """[Usages:
         Amenity.all() - displays all objects of class Amenity
         Amenity.count() - displays number of objects of class Amenity
         Amenity.show(<id>) - displays object of class Amenity with id
         Amenity.destroy(<id>) - deletes object of class Amenity with id
         Amenity.update(<id>, <attribute name>, <attribute value>) - update
-        Amenity.update(<id>, <dictionary representation>) - update
+        Amenity.update(<id>, <dictionary representation>) - update]
         """
         self.class_exec('Amenity', args)
 
     def do_Place(self, args):
-        """Usages:
+        """[Usages:
         Place.all() - displays all objects of class Place
         Place.count() - displays number of objects of class Place
         Place.show(<id>) - displays object of class Place with id
         Place.destroy(<id>) - deletes object of class Place with id
         Place.update(<id>, <attribute name>, <attribute value>) - update
-        Place.update(<id>, <dictionary representation>) - update
+        Place.update(<id>, <dictionary representation>) - update]
         """
         self.class_exec('Place', args)
 
     def do_Review(self, args):
-        """Usages:
+        """[Usages:
         Review.all() - displays all objects of class Review
         Review.count() - displays number of objects of class Review
         Review.show(<id>) - displays object of class Review with id
         Review.destroy(<id>) - deletes object of class Review with id
         Review.update(<id>, <attribute name>, <attribute value>) - update
-        Review.update(<id>, <dictionary representation>) - update
+        Review.update(<id>, <dictionary representation>) - update]
         """
         self.class_exec('Review', args)
 
     def class_exec(self, cls_name, args):
-        """Wrapper function for <class name>.action()"""
-        if args[:6] == '.all()':
+        """[Wrapper function for <class name>.action()]"""
+        if args[: 6] == '.all()':
             self.do_all(cls_name)
-        elif args[:7] == '.count(':
+        elif args[: 7] == '.count(':
             self.count(cls_name)
-        elif args[:6] == '.show(':
-            self.do_show(cls_name + ' ' + args[7:-2])
-        elif args[:9] == '.destroy(':
-            self.do_destroy(cls_name + ' ' + args[10:-2])
-        elif args[:8] == '.update(':
+        elif args[: 6] == '.show(':
+            self.do_show(cls_name + ' ' + args[7: -2])
+        elif args[: 9] == '.destroy(':
+            self.do_destroy(cls_name + ' ' + args[10: -2])
+        elif args[: 8] == '.update(':
             if '{' in args and '}' in args:
-                new_arg = args[8:-1].split('{')
+                new_arg = args[8: -1].split('{')
                 new_arg[1] = '{' + new_arg[1]
             else:
-                new_arg = args[8:-1].split(',')
+                new_arg = args[8: -1].split(',')
             if len(new_arg) == 3:
                 new_arg = " ".join(new_arg)
                 new_arg = new_arg.replace("\"", "")

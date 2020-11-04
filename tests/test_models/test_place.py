@@ -8,11 +8,11 @@ from models.place import Place
 
 class Test_PlaceModel(unittest.TestCase):
     """
-    Test the place model class
+    [Test the place model class]
     """
 
     def testpep8(self):
-        """ testing codestyle """
+        """ [testing codestyle] """
         pepstylecode = pep8.StyleGuide(quiet=True)
         user_path = 'models/place.py'
         result = pepstylecode.check_files([user_path])

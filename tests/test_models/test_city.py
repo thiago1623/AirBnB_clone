@@ -7,10 +7,11 @@ from models.city import City
 
 class Test_CityModel(unittest.TestCase):
     """
-    Test the amenity model class
+    [Test the amenity model class]
     """
+
     def testpep8(self):
-        """ testing codestyle """
+        """ [testing codestyle] """
         pepstylecode = pep8.StyleGuide(quiet=True)
         user_path = 'models/city.py'
         result = pepstylecode.check_files([user_path])

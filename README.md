@@ -42,6 +42,9 @@ This repository contains the first phase of a student project to build a clone o
 | update :point_up_2: | Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file) |
 | quit :end:          | Exit the program                                                                                                        |
 | help :shell:        | Display help documentation of every command                                                                             |
+
+---
+
 	
 ## Example how to use
 
@@ -108,6 +111,30 @@ This repository contains the first phase of a student project to build a clone o
 ```
 (hbnb) 
 ```
+---
+
+## Those commands also can be used in this way:
+
+1- create :pencil2:
+````
+(hbnb) <class name>.create()
+````
+2- all :crystal_ball:
+````
+(hbnb) <class name>.all()
+````
+3- destroy :fire:
+````
+(hbnb) <class name>.destroy("<id>")
+````
+4- show :eyes:
+````
+(hbnb) <class name>.show("<id>")
+````
+5- update :point_up_2:
+````
+(hbnb) <class name>.update("<id>", "<attribute name>", "<attribute value>")
+````
 
 ### AUTHORS 
 * [Santiago Trujillo](https://github.com/thiago1623) :guitar:

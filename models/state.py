@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""State Class"""
+"""[State Class]"""
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """State class"""
+    """[State class]"""
     name = ""

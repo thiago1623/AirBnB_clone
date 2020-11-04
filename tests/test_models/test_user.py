@@ -7,11 +7,11 @@ from models.user import User
 
 class Test_UserModel(unittest.TestCase):
     """
-    Test the user model class
+    [Test the user model class]
     """
 
     def testpep8(self):
-        """ testing codestyle """
+        """ [testing codestyle] """
         pepstylecode = pep8.StyleGuide(quiet=True)
         user_path = 'models/user.py'
         result = pepstylecode.check_files([user_path])

@@ -7,11 +7,11 @@ from models.review import Review
 
 class Test_ReviewModel(unittest.TestCase):
     """
-    Test the review model class
+    [Test the review model class]
     """
 
     def testpep8(self):
-        """ testing codestyle """
+        """ [testing codestyle] """
         pepstylecode = pep8.StyleGuide(quiet=True)
         user_path = 'models/review.py'
         result = pepstylecode.check_files([user_path])

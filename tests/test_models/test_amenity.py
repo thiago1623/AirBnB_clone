@@ -7,11 +7,11 @@ from models.amenity import Amenity
 
 class Test_AmenityModel(unittest.TestCase):
     """
-    Test the amenity model class
+    [Test the amenity model class]
     """
 
     def testpep8(self):
-        """ testing codestyle """
+        """ [testing codestyle] """
         pepstylecode = pep8.StyleGuide(quiet=True)
         user_path = 'models/amenity.py'
         result = pepstylecode.check_files([user_path])
