@@ -1,0 +1,59 @@
+/*styles for filters*/
+.filters {
+  position: relative;
+  background-color: #ffffff;
+  height: 70px;
+  width: 100%;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+.filters button {
+  position: absolute;
+  font-size: 18px;
+  background-color: #FF5A5F;
+  right: 30px;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  height: 48px;
+  width: 20%
+
+}
+
+.filters button:hover{
+  opacity: 0.9;
+}
+
+/*styles for locations*/
+.locations {
+  border-right: 1PX solid #DDDDDD;
+}
+
+/*styles for Amenities*/
+.locations, .amenities {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 4%;
+  width: 25%;
+  height: 100%
+}
+
+/*styles for h3 elements*/
+.locations h3, .amenities h3 {
+  font-weight: 600;
+  margin: 0;
+  margin-top: 20px;
+}
+/*styles for h4 elements*/
+.locations h4, .amenities h4 {
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 4px;
+}
